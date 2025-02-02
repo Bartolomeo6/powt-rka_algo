@@ -79,20 +79,18 @@ void dominanta(int liczby[], int dlugosc) {
 
 
 void sitoErato(int n){
-    
-    int* tablicaLiczb = new int[n+1];
-    
-    for(int i = 0; i<=n; i++){
-        tablicaLiczb[i] = 1;
+   bool A[n];
+
+    for(int i = 0; i<n; i++){
+        A[i] = true;
     }
-    
-    tablicaLiczb[0] = 0;
-    tablicaLiczb[1] = 0;
-    
-    for(int i = 2; (i*i)<=n; i++){
-        if(tablicaLiczb[i] == 1){
-            for(int j = (i*i); j<=n; j+=i){
-                tablicaLiczb[j] = 0;
+
+    A[0] = A[1] = false;
+
+    for(int i = 2; i<=n; i++){
+        if(A[i]){
+            for(int j = i*i; j<n; j+=i){
+                A[j] = false;
             }
         }
     }
